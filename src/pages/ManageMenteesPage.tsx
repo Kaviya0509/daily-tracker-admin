@@ -95,7 +95,7 @@ export default function ManageMenteesPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2.5">
-            <Users className="h-7 w-7 text-sky-500" />
+            <Users className="h-7 w-7 text-indigo-500" />
             Manage Mentees
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -105,7 +105,7 @@ export default function ManageMenteesPage() {
 
         <Button
           onClick={() => setAddModalOpen(true)}
-          className="bg-linear-to-r from-sky-500 to-sky-500 hover:from-sky-600 hover:to-sky-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-sky-500/20 flex items-center gap-2"
+          className="bg-linear-to-r from-indigo-500 to-indigo-500 hover:from-indigo-600 hover:to-indigo-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-500/20 flex items-center gap-2"
         >
           <UserPlus className="h-4 w-4" />
           Add New Mentee
@@ -130,7 +130,7 @@ export default function ManageMenteesPage() {
       {/* Mentees Grid */}
       {loading ? (
         <div className="p-16 text-center">
-          <Loader2 className="h-8 w-8 animate-spin text-sky-500 mx-auto" />
+          <Loader2 className="h-8 w-8 animate-spin text-indigo-500 mx-auto" />
           <p className="text-xs text-slate-500 mt-3">Loading mentee directory...</p>
         </div>
       ) : filteredMentees.length === 0 ? (
@@ -151,7 +151,7 @@ export default function ManageMenteesPage() {
                 <CardContent className="p-5 space-y-4">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-11 w-11 rounded-xl bg-linear-to-tr from-sky-500 to-sky-500 text-white font-black text-sm flex items-center justify-center shadow-xs">
+                      <div className="h-11 w-11 rounded-xl bg-linear-to-tr from-indigo-500 to-indigo-500 text-white font-black text-sm flex items-center justify-center shadow-xs">
                         {(mentee.displayName[0] || "M").toUpperCase()}
                       </div>
                       <div>
@@ -176,7 +176,7 @@ export default function ManageMenteesPage() {
                         Total Reports
                       </span>
                       <span className="font-extrabold text-slate-800 text-sm flex items-center gap-1 mt-0.5">
-                        <FileText className="h-3.5 w-3.5 text-sky-500" />
+                        <FileText className="h-3.5 w-3.5 text-indigo-500" />
                         {reportCount}
                       </span>
                     </div>
@@ -195,7 +195,7 @@ export default function ManageMenteesPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => navigate(`/tracker?mentee=${mentee.uid}`)}
-                    className="w-full h-8 rounded-xl text-xs text-slate-700 border-slate-200 hover:border-sky-300 hover:text-sky-600 flex items-center justify-center gap-1.5"
+                    className="w-full h-8 rounded-xl text-xs text-slate-700 border-slate-200 hover:border-indigo-300 hover:text-indigo-600 flex items-center justify-center gap-1.5"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
                     View Reports in Tracker
@@ -209,10 +209,10 @@ export default function ManageMenteesPage() {
 
       {/* Add Mentee Modal */}
       <Dialog open={addModalOpen} onOpenChange={setAddModalOpen}>
-        <DialogContent className="sm:max-w-md rounded-3xl p-6">
+        <DialogContent className="sm:max-w-md max-h-[92vh] overflow-y-auto rounded-3xl p-5 sm:p-6">
           <DialogHeader>
             <DialogTitle className="text-lg font-bold flex items-center gap-2">
-              <UserPlus className="h-5 w-5 text-sky-500" />
+              <UserPlus className="h-5 w-5 text-indigo-500" />
               Add Mentee to Workspace
             </DialogTitle>
             <DialogDescription className="text-xs text-slate-500">
@@ -256,7 +256,7 @@ export default function ManageMenteesPage() {
               <Button
                 type="submit"
                 disabled={submitting}
-                className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl text-xs font-bold"
               >
                 {submitting ? <Loader2 className="h-4 w-4 animate-spin mr-1.5" /> : null}
                 Save Mentee

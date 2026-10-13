@@ -48,9 +48,9 @@ function getMenteeAvatarColor(name: string): string {
     "bg-blue-600 text-white",
     "bg-emerald-600 text-white",
     "bg-purple-600 text-white",
-    "bg-sky-600 text-white",
+    "bg-indigo-600 text-white",
     "bg-rose-600 text-white",
-    "bg-cyan-600 text-white",
+    "bg-violet-600 text-white",
     "bg-indigo-600 text-white",
   ];
   let hash = 0;
@@ -71,8 +71,8 @@ function renderStatusBadge(status: ReportStatus) {
       );
     case "In Progress":
       return (
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/80 shadow-xs">
-          <span className="h-2 w-2 rounded-full bg-sky-500 shrink-0" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          <span className="h-2 w-2 rounded-full bg-indigo-500 shrink-0" />
           In Progress
         </span>
       );
@@ -85,8 +85,8 @@ function renderStatusBadge(status: ReportStatus) {
       );
     case "On Hold":
       return (
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/80 shadow-xs">
-          <span className="h-2 w-2 rounded-full bg-sky-500 shrink-0" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          <span className="h-2 w-2 rounded-full bg-indigo-500 shrink-0" />
           On Hold
         </span>
       );
@@ -258,7 +258,7 @@ export default function ReportDetailsPage() {
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Navigation Breadcrumb */}
       <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Link to="/tracker" className="hover:text-sky-600 transition-colors">
+        <Link to="/tracker" className="hover:text-indigo-600 transition-colors">
           Daily Tracker
         </Link>
         <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
@@ -301,7 +301,7 @@ export default function ReportDetailsPage() {
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                 <span className="flex items-center gap-1 font-medium">
-                  <Calendar className="h-3.5 w-3.5 text-sky-500" />
+                  <Calendar className="h-3.5 w-3.5 text-indigo-500" />
                   {report.reportDate}
                 </span>
                 <span>•</span>
@@ -333,7 +333,7 @@ export default function ReportDetailsPage() {
               <Button
                 size="sm"
                 onClick={() => setEditing(true)}
-                className="bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl text-xs shadow-xs"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl text-xs shadow-xs"
               >
                 <Pencil className="h-3.5 w-3.5 mr-1.5" />
                 Edit Report
@@ -373,7 +373,7 @@ export default function ReportDetailsPage() {
         {/* Card 1: Task Overview */}
         <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-            <Briefcase className="h-4 w-4 text-sky-500" />
+            <Briefcase className="h-4 w-4 text-indigo-500" />
             <h3 className="text-sm font-bold text-slate-900">Task Overview & Execution</h3>
           </div>
 
@@ -518,8 +518,8 @@ export default function ReportDetailsPage() {
               )}
 
               {report.idleReasonWorkNeeded && (
-                <div className="p-3.5 rounded-xl bg-sky-50/50 border border-sky-200 text-sky-900 space-y-1">
-                  <span className="text-xs font-semibold text-sky-700 block">
+                <div className="p-3.5 rounded-xl bg-indigo-50/50 border border-indigo-200 text-indigo-900 space-y-1">
+                  <span className="text-xs font-semibold text-indigo-700 block">
                     Idle Reason / Support Needed:
                   </span>
                   <p className="text-xs whitespace-pre-wrap">{report.idleReasonWorkNeeded}</p>
@@ -532,7 +532,7 @@ export default function ReportDetailsPage() {
         {/* Card 3: Timeline & Notes */}
         <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-            <Clock className="h-4 w-4 text-sky-500" />
+            <Clock className="h-4 w-4 text-indigo-500" />
             <h3 className="text-sm font-bold text-slate-900">Timeline, Target & Audit</h3>
           </div>
 

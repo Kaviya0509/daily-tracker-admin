@@ -76,9 +76,9 @@ function getMenteeAvatarColor(name: string): string {
     "bg-blue-600 text-white",
     "bg-emerald-600 text-white",
     "bg-purple-600 text-white",
-    "bg-sky-600 text-white",
+    "bg-indigo-600 text-white",
     "bg-rose-600 text-white",
-    "bg-cyan-600 text-white",
+    "bg-violet-600 text-white",
     "bg-indigo-600 text-white",
   ];
   let hash = 0;
@@ -99,8 +99,8 @@ function renderStatusBadge(status: ReportStatus) {
       );
     case "In Progress":
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/80 shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-sky-500 shrink-0" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
           In Progress
         </span>
       );
@@ -113,8 +113,8 @@ function renderStatusBadge(status: ReportStatus) {
       );
     case "On Hold":
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/80 shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-sky-500 shrink-0" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
           On Hold
         </span>
       );
@@ -403,7 +403,7 @@ export default function DailyTrackerPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-7 w-7 p-0 text-slate-500 hover:text-sky-600 hover:bg-sky-50"
+                className="h-7 w-7 p-0 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50"
                 onClick={(e) => {
                   e.stopPropagation();
                   setPreviewReport(report);
@@ -471,12 +471,12 @@ export default function DailyTrackerPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* 1-Click Excel Export for current filters (Start & End Date, Mentee, Status) */}
           <Button
             onClick={() => handleExport("filtered")}
             disabled={exporting}
-            className="inline-flex items-center justify-center rounded-xl text-xs font-bold h-9 px-4 bg-[#0284C7] hover:bg-[#0369A1] text-white shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center rounded-xl text-xs font-bold h-9 px-4 bg-[#4F46E5] hover:bg-[#4338CA] text-white shadow-xs transition-colors cursor-pointer"
           >
             {exporting ? (
               <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
@@ -489,21 +489,21 @@ export default function DailyTrackerPage() {
           <DropdownMenu>
             <DropdownMenuTrigger
               disabled={exporting}
-              className="inline-flex items-center justify-center rounded-xl text-xs font-semibold h-9 px-2 border border-[#D5E5F2] text-[#25344A] bg-[#FFFFFF] hover:bg-[#EEF6FC] shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center rounded-xl text-xs font-semibold h-9 px-2 border border-[#D9DDF3] text-[#25344A] bg-[#FFFFFF] hover:bg-[#EEF0FD] shadow-xs transition-colors cursor-pointer"
               title="More export options"
             >
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" side="bottom" sideOffset={6} className="w-52 bg-[#FFFFFF] border border-[#D5E5F2] text-[#25344A]">
-              <DropdownMenuItem onClick={() => handleExport("filtered")} className="text-xs hover:bg-[#EEF6FC] cursor-pointer">
-                <Filter className="h-4 w-4 mr-2 text-[#0284C7]" />
+            <DropdownMenuContent align="end" side="bottom" sideOffset={6} className="w-52 bg-[#FFFFFF] border border-[#D9DDF3] text-[#25344A]">
+              <DropdownMenuItem onClick={() => handleExport("filtered")} className="text-xs hover:bg-[#EEF0FD] cursor-pointer">
+                <Filter className="h-4 w-4 mr-2 text-[#4F46E5]" />
                 Export Current Filters
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("today")} className="text-xs hover:bg-[#EEF6FC] cursor-pointer">
+              <DropdownMenuItem onClick={() => handleExport("today")} className="text-xs hover:bg-[#EEF0FD] cursor-pointer">
                 <Calendar className="h-4 w-4 mr-2 text-[#66758A]" />
                 Export Today's ({todayStr})
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("all")} className="text-xs hover:bg-[#EEF6FC] cursor-pointer">
+              <DropdownMenuItem onClick={() => handleExport("all")} className="text-xs hover:bg-[#EEF0FD] cursor-pointer">
                 <Download className="h-4 w-4 mr-2 text-[#66758A]" />
                 Export All History
               </DropdownMenuItem>
@@ -522,7 +522,7 @@ export default function DailyTrackerPage() {
           className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
             !isAnyFilterActive
               ? "bg-[#25344A] text-white shadow-xs"
-              : "bg-[#FFFFFF] text-[#25344A] border border-[#D5E5F2] hover:bg-[#EEF6FC]"
+              : "bg-[#FFFFFF] text-[#25344A] border border-[#D9DDF3] hover:bg-[#EEF0FD]"
           }`}
         >
           All Reports
@@ -531,8 +531,8 @@ export default function DailyTrackerPage() {
           onClick={setPresetToday}
           className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
             filters.startDate === todayStr && filters.endDate === todayStr
-              ? "bg-[#0284C7] text-white shadow-xs"
-              : "bg-[#FFFFFF] text-[#25344A] border border-[#D5E5F2] hover:bg-[#EEF6FC] hover:text-[#0284C7]"
+              ? "bg-[#4F46E5] text-white shadow-xs"
+              : "bg-[#FFFFFF] text-[#25344A] border border-[#D9DDF3] hover:bg-[#EEF0FD] hover:text-[#4F46E5]"
           }`}
         >
           <Calendar className="h-3 w-3" />
@@ -541,7 +541,7 @@ export default function DailyTrackerPage() {
       </div>
 
       {/* Filter Toolbar Card */}
-      <div className="bg-[#FFFFFF] rounded-2xl border border-[#D5E5F2] p-4 sm:p-5 shadow-xs space-y-4">
+      <div className="bg-[#FFFFFF] rounded-2xl border border-[#D9DDF3] p-4 sm:p-5 shadow-xs space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-3.5">
           {/* Search Input - 4 cols */}
           <div className="lg:col-span-4 relative">
@@ -554,7 +554,7 @@ export default function DailyTrackerPage() {
                 placeholder="Search by mentee name, task, description..."
                 value={filters.search}
                 onChange={(e) => setFilters((f) => ({ ...f, search: e.target.value }))}
-                className="pl-9 pr-8 h-9 text-xs rounded-xl border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A] placeholder:text-[#66758A]/70"
+                className="pl-9 pr-8 h-9 text-xs rounded-xl border-[#D9DDF3] bg-[#EEF0FD] placeholder:text-[#66758A]/70"
               />
               {filters.search && (
                 <button
@@ -581,12 +581,12 @@ export default function DailyTrackerPage() {
                 }))
               }
             >
-              <SelectTrigger className="h-9 w-full text-xs rounded-xl border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A]">
+              <SelectTrigger className="h-9 w-full text-xs rounded-xl border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A]">
                 <span className="truncate flex-1 text-left font-medium text-xs">
                   {filters.menteeUid ? (selectedMenteeName || "Selected Mentee") : "All Mentees"}
                 </span>
               </SelectTrigger>
-              <SelectContent align="start" side="bottom" className="bg-[#FFFFFF] border border-[#D5E5F2]">
+              <SelectContent align="start" side="bottom" className="bg-[#FFFFFF] border border-[#D9DDF3]">
                 <SelectItem value="all">All Mentees ({mentees.length})</SelectItem>
                 {mentees.map((m) => (
                   <SelectItem key={m.uid} value={m.uid}>
@@ -611,12 +611,12 @@ export default function DailyTrackerPage() {
                 }))
               }
             >
-              <SelectTrigger className="h-9 w-full text-xs rounded-xl border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A]">
+              <SelectTrigger className="h-9 w-full text-xs rounded-xl border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A]">
                 <span className="truncate flex-1 text-left font-medium text-xs">
                   {filters.status ? filters.status : "All Statuses"}
                 </span>
               </SelectTrigger>
-              <SelectContent align="start" side="bottom" className="bg-[#FFFFFF] border border-[#D5E5F2]">
+              <SelectContent align="start" side="bottom" className="bg-[#FFFFFF] border border-[#D9DDF3]">
                 <SelectItem value="all">All Statuses</SelectItem>
                 {statusOptions.map((s) => (
                   <SelectItem key={s} value={s}>
@@ -636,7 +636,7 @@ export default function DailyTrackerPage() {
               type="date"
               value={filters.startDate}
               onChange={(e) => setFilters((f) => ({ ...f, startDate: e.target.value }))}
-              className="h-9 w-full text-xs rounded-xl border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A]"
+              className="h-9 w-full text-xs rounded-xl border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A]"
             />
           </div>
 
@@ -649,19 +649,19 @@ export default function DailyTrackerPage() {
               type="date"
               value={filters.endDate}
               onChange={(e) => setFilters((f) => ({ ...f, endDate: e.target.value }))}
-              className="h-9 w-full text-xs rounded-xl border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A]"
+              className="h-9 w-full text-xs rounded-xl border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A]"
             />
           </div>
         </div>
 
         {/* Second row of date & reset */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#D5E5F2]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#D9DDF3]">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs text-[#66758A] font-medium">Date Presets:</span>
             <Button
               variant="outline"
               size="sm"
-              className="h-7 text-xs px-2.5 rounded-lg border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A] hover:bg-[#E6F1FA]"
+              className="h-7 text-xs px-2.5 rounded-lg border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A] hover:bg-[#E8EAFB]"
               onClick={() => setFilters((f) => ({ ...f, startDate: todayStr, endDate: todayStr }))}
             >
               Today
@@ -669,7 +669,7 @@ export default function DailyTrackerPage() {
             <Button
               variant="outline"
               size="sm"
-              className="h-7 text-xs px-2.5 rounded-lg border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A] hover:bg-[#E6F1FA]"
+              className="h-7 text-xs px-2.5 rounded-lg border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A] hover:bg-[#E8EAFB]"
               onClick={() => setFilters((f) => ({ ...f, startDate: yesterdayStr, endDate: yesterdayStr }))}
             >
               Yesterday
@@ -677,7 +677,7 @@ export default function DailyTrackerPage() {
             <Button
               variant="outline"
               size="sm"
-              className="h-7 text-xs px-2.5 rounded-lg border-[#D5E5F2] bg-[#EEF6FC] text-[#25344A] hover:bg-[#E6F1FA]"
+              className="h-7 text-xs px-2.5 rounded-lg border-[#D9DDF3] bg-[#EEF0FD] text-[#25344A] hover:bg-[#E8EAFB]"
               onClick={() => setFilters((f) => ({ ...f, startDate: "", endDate: "" }))}
             >
               Clear Dates
@@ -685,7 +685,7 @@ export default function DailyTrackerPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold text-[#25344A] bg-[#EEF6FC] border border-[#D5E5F2] px-2.5 py-1 rounded-full">
+            <span className="text-xs font-semibold text-[#25344A] bg-[#EEF0FD] border border-[#D9DDF3] px-2.5 py-1 rounded-full">
               {reports.length} report{reports.length !== 1 ? "s" : ""} loaded
             </span>
             {isAnyFilterActive && (
@@ -704,10 +704,10 @@ export default function DailyTrackerPage() {
 
         {/* Active Filter Chips */}
         {isAnyFilterActive && (
-          <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#D5E5F2] text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#D9DDF3] text-xs">
             <span className="text-[#66758A] font-medium mr-1">Active:</span>
             {filters.search && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF6FC] text-[#25344A] border border-[#D5E5F2] font-medium">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF0FD] text-[#25344A] border border-[#D9DDF3] font-medium">
                 Search: "{filters.search}"
                 <X
                   className="h-3 w-3 cursor-pointer hover:text-rose-500"
@@ -716,7 +716,7 @@ export default function DailyTrackerPage() {
               </span>
             )}
             {filters.status && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 font-medium border border-sky-200">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-medium border border-indigo-200">
                 Status: {filters.status}
                 <X
                   className="h-3 w-3 cursor-pointer hover:text-rose-500"
@@ -734,7 +734,7 @@ export default function DailyTrackerPage() {
               </span>
             )}
             {filters.startDate && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF6FC] text-[#25344A] border border-[#D5E5F2] font-medium">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF0FD] text-[#25344A] border border-[#D9DDF3] font-medium">
                 From: {filters.startDate}
                 <X
                   className="h-3 w-3 cursor-pointer hover:text-rose-500"
@@ -743,7 +743,7 @@ export default function DailyTrackerPage() {
               </span>
             )}
             {filters.endDate && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF6FC] text-[#25344A] border border-[#D5E5F2] font-medium">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EEF0FD] text-[#25344A] border border-[#D9DDF3] font-medium">
                 To: {filters.endDate}
                 <X
                   className="h-3 w-3 cursor-pointer hover:text-rose-500"
@@ -756,14 +756,14 @@ export default function DailyTrackerPage() {
       </div>
 
       {/* Modern Data Table */}
-      <div className="bg-[#FFFFFF] rounded-2xl border border-[#D5E5F2] shadow-xs overflow-hidden">
+      <div className="bg-[#FFFFFF] rounded-2xl border border-[#D9DDF3] shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   key={headerGroup.id}
-                  className="bg-[#EEF6FC] hover:bg-[#EEF6FC] border-b border-[#D5E5F2]"
+                  className="bg-[#EEF0FD] hover:bg-[#EEF0FD] border-b border-[#D9DDF3]"
                 >
                   {headerGroup.headers.map((header) => (
                     <TableHead
@@ -775,7 +775,7 @@ export default function DailyTrackerPage() {
                         <div
                           className={`flex items-center gap-1.5 ${
                             header.column.getCanSort()
-                              ? "cursor-pointer select-none hover:text-[#0284C7] transition-colors"
+                              ? "cursor-pointer select-none hover:text-[#4F46E5] transition-colors"
                               : ""
                           }`}
                           onClick={header.column.getToggleSortingHandler()}
@@ -783,9 +783,9 @@ export default function DailyTrackerPage() {
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {header.column.getCanSort() &&
                             (header.column.getIsSorted() === "asc" ? (
-                              <ChevronUp className="h-3.5 w-3.5 text-[#0284C7]" />
+                              <ChevronUp className="h-3.5 w-3.5 text-[#4F46E5]" />
                             ) : header.column.getIsSorted() === "desc" ? (
-                              <ChevronDown className="h-3.5 w-3.5 text-[#0284C7]" />
+                              <ChevronDown className="h-3.5 w-3.5 text-[#4F46E5]" />
                             ) : (
                               <ChevronsUpDown className="h-3 w-3 text-[#66758A]" />
                             ))}
@@ -811,7 +811,7 @@ export default function DailyTrackerPage() {
                 <TableRow>
                   <TableCell colSpan={columns.length} className="text-center py-16">
                     <div className="max-w-sm mx-auto space-y-3">
-                      <div className="h-12 w-12 rounded-2xl bg-sky-50 text-[#0284C7] mx-auto flex items-center justify-center">
+                      <div className="h-12 w-12 rounded-2xl bg-indigo-50 text-[#4F46E5] mx-auto flex items-center justify-center">
                         <Search className="h-6 w-6" />
                       </div>
                       <h4 className="text-base font-bold text-[#25344A]">
@@ -824,7 +824,7 @@ export default function DailyTrackerPage() {
                         variant="outline"
                         size="sm"
                         onClick={handleResetFilters}
-                        className="rounded-xl border-[#D5E5F2] text-[#25344A] bg-[#FFFFFF] hover:bg-[#EEF6FC]"
+                        className="rounded-xl border-[#D9DDF3] text-[#25344A] bg-[#FFFFFF] hover:bg-[#EEF0FD]"
                       >
                         Reset All Filters
                       </Button>
@@ -837,17 +837,17 @@ export default function DailyTrackerPage() {
                   return (
                     <Fragment key={weekHeading}>
                       {showWeekHeading && (
-                        <TableRow className="bg-[#EEF6FC] hover:bg-[#EEF6FC] border-y border-[#D5E5F2]">
+                        <TableRow className="bg-[#EEF0FD] hover:bg-[#EEF0FD] border-y border-[#D9DDF3]">
                           <TableCell
                             colSpan={columns.length}
                             className="py-2.5 px-4 text-xs font-bold text-[#25344A]"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
-                                <Calendar className="h-3.5 w-3.5 text-[#0284C7]" />
+                                <Calendar className="h-3.5 w-3.5 text-[#4F46E5]" />
                                 <span>{weekHeading}</span>
                               </div>
-                              <span className="text-[11px] font-medium text-[#25344A] bg-[#FFFFFF] border border-[#D5E5F2] px-2.5 py-0.5 rounded-full">
+                              <span className="text-[11px] font-medium text-[#25344A] bg-[#FFFFFF] border border-[#D9DDF3] px-2.5 py-0.5 rounded-full">
                                 {weekReports.length} {weekReports.length === 1 ? "report" : "reports"}
                               </span>
                             </div>
@@ -857,8 +857,8 @@ export default function DailyTrackerPage() {
                       {weekReports.map((report, rowIndex) => (
                         <TableRow
                           key={report.reportId}
-                          className={`cursor-pointer transition-colors hover:bg-[#EEF6FC]/70 border-b border-[#D5E5F2]/70 ${
-                            rowIndex % 2 === 0 ? "bg-[#FFFFFF]" : "bg-[#EEF6FC]/30"
+                          className={`cursor-pointer transition-colors hover:bg-[#EEF0FD]/70 border-b border-[#D9DDF3]/70 ${
+                            rowIndex % 2 === 0 ? "bg-[#FFFFFF]" : "bg-[#EEF0FD]/30"
                           }`}
                           onClick={() => setPreviewReport(report)}
                         >
@@ -941,7 +941,7 @@ export default function DailyTrackerPage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-7 w-7 p-0 text-[#66758A] hover:text-[#0284C7] hover:bg-[#EEF6FC]"
+                                className="h-7 w-7 p-0 text-[#66758A] hover:text-[#4F46E5] hover:bg-[#EEF0FD]"
                                 onClick={() => setPreviewReport(report)}
                                 title="Quick View"
                               >
@@ -950,7 +950,7 @@ export default function DailyTrackerPage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-7 w-7 p-0 text-[#66758A] hover:text-[#4779C7] hover:bg-[#EEF6FC]"
+                                className="h-7 w-7 p-0 text-[#66758A] hover:text-[#4779C7] hover:bg-[#EEF0FD]"
                                 onClick={() => navigate(`/reports/${report.reportId}?edit=true`)}
                                 title="Edit"
                               >
@@ -970,7 +970,7 @@ export default function DailyTrackerPage() {
 
         {/* Pagination Bar */}
         {reports.length > 0 && (
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3.5 border-t border-[#D5E5F2] bg-[#EEF6FC]">
+          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3.5 border-t border-[#D9DDF3] bg-[#EEF0FD]">
             <div className="flex items-center gap-2">
               <span className="text-xs text-[#66758A] font-medium">Rows per page:</span>
               <Select
@@ -979,10 +979,10 @@ export default function DailyTrackerPage() {
                   if (val) setPageSize(Number(val));
                 }}
               >
-                <SelectTrigger className="h-8 w-20 text-xs rounded-lg border-[#D5E5F2] bg-[#FFFFFF] text-[#25344A]">
+                <SelectTrigger className="h-8 w-20 text-xs rounded-lg border-[#D9DDF3] bg-[#FFFFFF] text-[#25344A]">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#FFFFFF] border border-[#D5E5F2]">
+                <SelectContent className="bg-[#FFFFFF] border border-[#D9DDF3]">
                   <SelectItem value="10">10</SelectItem>
                   <SelectItem value="25">25</SelectItem>
                   <SelectItem value="50">50</SelectItem>
@@ -1000,7 +1000,7 @@ export default function DailyTrackerPage() {
                 size="sm"
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}
-                className="h-8 text-xs rounded-lg border-[#D5E5F2] bg-[#FFFFFF] text-[#25344A] hover:bg-[#E6F1FA]"
+                className="h-8 text-xs rounded-lg border-[#D9DDF3] bg-[#FFFFFF] text-[#25344A] hover:bg-[#E8EAFB]"
               >
                 Previous
               </Button>
@@ -1009,7 +1009,7 @@ export default function DailyTrackerPage() {
                 size="sm"
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
-                className="h-8 text-xs rounded-lg border-[#D5E5F2] bg-[#FFFFFF] text-[#25344A] hover:bg-[#E6F1FA]"
+                className="h-8 text-xs rounded-lg border-[#D9DDF3] bg-[#FFFFFF] text-[#25344A] hover:bg-[#E8EAFB]"
               >
                 Next
               </Button>
@@ -1018,7 +1018,7 @@ export default function DailyTrackerPage() {
                   variant="outline"
                   size="sm"
                   onClick={() => fetchReports(true)}
-                  className="h-8 text-xs rounded-lg border-[#0284C7] text-[#0284C7] bg-[#FFFFFF] hover:bg-[#EEF6FC] font-semibold"
+                  className="h-8 text-xs rounded-lg border-[#4F46E5] text-[#4F46E5] bg-[#FFFFFF] hover:bg-[#EEF0FD] font-semibold"
                   disabled={loading}
                 >
                   Load More From Cloud
@@ -1032,8 +1032,8 @@ export default function DailyTrackerPage() {
       {/* Quick View Modal Dialog - max-w-2xl, no raw ID */}
       <Dialog open={!!previewReport} onOpenChange={(open: boolean) => !open && setPreviewReport(null)}>
         {previewReport && (
-          <DialogContent className="max-w-2xl p-0 overflow-hidden rounded-3xl bg-[#FFFFFF] border border-[#D5E5F2] shadow-2xl">
-            <DialogHeader className="p-5 bg-linear-to-r from-[#0284C7] to-[#0369A1] text-white relative text-left">
+          <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-2xl p-0 max-h-[92vh] overflow-y-auto rounded-3xl bg-[#FFFFFF] border border-[#D9DDF3] shadow-2xl">
+            <DialogHeader className="p-5 bg-linear-to-r from-[#4F46E5] to-[#4338CA] text-white relative text-left">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div
@@ -1054,7 +1054,7 @@ export default function DailyTrackerPage() {
                     <DialogTitle className="text-base font-bold text-white">
                       {previewReport.menteeName}
                     </DialogTitle>
-                    <DialogDescription className="text-xs text-sky-100">
+                    <DialogDescription className="text-xs text-indigo-100">
                       Report Date: {previewReport.reportDate}
                     </DialogDescription>
                   </div>
@@ -1069,7 +1069,7 @@ export default function DailyTrackerPage() {
                 <label className="text-[11px] font-bold text-[#66758A] uppercase tracking-wider">
                   Task / Project Title
                 </label>
-                <p className="text-sm font-bold text-[#25344A] bg-[#EEF6FC] p-3 rounded-xl border border-[#D5E5F2]">
+                <p className="text-sm font-bold text-[#25344A] bg-[#EEF0FD] p-3 rounded-xl border border-[#D9DDF3]">
                   {previewReport.currentTask}
                 </p>
               </div>
@@ -1079,7 +1079,7 @@ export default function DailyTrackerPage() {
                 <label className="text-[11px] font-bold text-[#66758A] uppercase tracking-wider">
                   Work Description
                 </label>
-                <p className="text-xs text-[#25344A] bg-[#EEF6FC] p-3 rounded-xl border border-[#D5E5F2] whitespace-pre-wrap leading-relaxed">
+                <p className="text-xs text-[#25344A] bg-[#EEF0FD] p-3 rounded-xl border border-[#D9DDF3] whitespace-pre-wrap leading-relaxed">
                   {previewReport.shortDescription || "No detailed description provided."}
                 </p>
               </div>
@@ -1100,7 +1100,7 @@ export default function DailyTrackerPage() {
                   <label className="text-[11px] font-bold text-[#66758A] uppercase tracking-wider">
                     Blocker / Dependency Details
                   </label>
-                  <p className="text-xs text-[#66758A] italic bg-[#EEF6FC] p-3 rounded-xl border border-[#D5E5F2]">
+                  <p className="text-xs text-[#66758A] italic bg-[#EEF0FD] p-3 rounded-xl border border-[#D9DDF3]">
                     No blockers reported.
                   </p>
                 </div>
@@ -1112,7 +1112,7 @@ export default function DailyTrackerPage() {
                   <label className="text-[11px] font-bold text-[#25344A] uppercase tracking-wider">
                     Idle Reason / Support Needed
                   </label>
-                  <p className="text-xs text-[#25344A] bg-[#EEF6FC] p-3 rounded-xl border border-[#D5E5F2] whitespace-pre-wrap leading-relaxed">
+                  <p className="text-xs text-[#25344A] bg-[#EEF0FD] p-3 rounded-xl border border-[#D9DDF3] whitespace-pre-wrap leading-relaxed">
                     {previewReport.idleReasonWorkNeeded}
                   </p>
                 </div>
@@ -1120,7 +1120,7 @@ export default function DailyTrackerPage() {
 
               {/* Lead and Target Date */}
               <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="p-3 rounded-xl bg-[#EEF6FC] border border-[#D5E5F2] space-y-0.5">
+                <div className="p-3 rounded-xl bg-[#EEF0FD] border border-[#D9DDF3] space-y-0.5">
                   <span className="text-[10px] font-semibold text-[#66758A] uppercase">
                     Reporting Lead
                   </span>
@@ -1128,7 +1128,7 @@ export default function DailyTrackerPage() {
                     {previewReport.managerLead || "None specified"}
                   </p>
                 </div>
-                <div className="p-3 rounded-xl bg-[#EEF6FC] border border-[#D5E5F2] space-y-0.5">
+                <div className="p-3 rounded-xl bg-[#EEF0FD] border border-[#D9DDF3] space-y-0.5">
                   <span className="text-[10px] font-semibold text-[#66758A] uppercase">
                     Target Completion
                   </span>
@@ -1144,32 +1144,32 @@ export default function DailyTrackerPage() {
                   <label className="text-[11px] font-bold text-[#66758A] uppercase tracking-wider">
                     Additional Notes
                   </label>
-                  <p className="text-xs text-[#25344A] bg-[#EEF6FC] p-3 rounded-xl border border-[#D5E5F2] whitespace-pre-wrap">
+                  <p className="text-xs text-[#25344A] bg-[#EEF0FD] p-3 rounded-xl border border-[#D9DDF3] whitespace-pre-wrap">
                     {previewReport.notes}
                   </p>
                 </div>
               )}
 
               {/* Mentee info footer without raw ID */}
-              <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#66758A] pt-3 border-t border-[#D5E5F2]">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#66758A] pt-3 border-t border-[#D9DDF3]">
                 <span>
                   Mentee: {previewReport.menteeName || "Mentee"} {previewReport.menteeEmail ? `(${previewReport.menteeEmail})` : ""}
                 </span>
               </div>
             </div>
 
-            <div className="p-4 bg-[#E6F1FA] border-t border-[#D5E5F2] flex items-center justify-between">
+            <div className="p-4 bg-[#E8EAFB] border-t border-[#D9DDF3] flex items-center justify-between">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setPreviewReport(null)}
-                className="rounded-xl text-xs border-[#D5E5F2] bg-[#FFFFFF] text-[#25344A] hover:bg-[#EEF6FC] cursor-pointer"
+                className="rounded-xl text-xs border-[#D9DDF3] bg-[#FFFFFF] text-[#25344A] hover:bg-[#EEF0FD] cursor-pointer"
               >
                 Close Preview
               </Button>
               <Button
                 size="sm"
-                className="bg-linear-to-r from-[#0284C7] to-[#0369A1] hover:from-[#0369A1] hover:to-[#075985] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                className="bg-linear-to-r from-[#4F46E5] to-[#4338CA] hover:from-[#4338CA] hover:to-[#3730A3] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
                 onClick={() => {
                   const id = previewReport.reportId;
                   setPreviewReport(null);

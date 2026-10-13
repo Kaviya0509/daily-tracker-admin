@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f5f7fb]">
-        <Loader2 className="h-10 w-10 animate-spin text-sky-500" />
+        <Loader2 className="h-10 w-10 animate-spin text-indigo-500" />
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default function AdminLoginPage() {
         <div className="bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.35)] rounded-3xl p-6 sm:p-8 space-y-5">
           {/* Brand Header */}
           <div className="text-center">
-            <div className="inline-flex items-center justify-center h-13 w-13 rounded-2xl bg-linear-to-tr from-sky-500 via-sky-500 to-sky-500 shadow-lg shadow-sky-500/25 p-0.5 mb-2.5">
+            <div className="inline-flex items-center justify-center h-13 w-13 rounded-2xl bg-linear-to-tr from-indigo-500 via-indigo-500 to-indigo-500 shadow-lg shadow-indigo-500/25 p-0.5 mb-2.5">
               <div className="h-full w-full bg-white/15 backdrop-blur-xs rounded-[14px] flex items-center justify-center">
                 <ShieldCheck className="h-6 w-6 text-white" strokeWidth={2.2} />
               </div>
@@ -174,7 +174,7 @@ export default function AdminLoginPage() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full h-11 bg-linear-to-r from-sky-500 to-sky-500 hover:from-sky-600 hover:to-sky-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow-md shadow-sky-500/25 border-0 transition-all cursor-pointer mt-2"
+              className="w-full h-11 bg-linear-to-r from-indigo-500 to-indigo-500 hover:from-indigo-600 hover:to-indigo-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow-md shadow-indigo-500/25 border-0 transition-all cursor-pointer mt-2"
               disabled={submitting}
             >
               {submitting ? (

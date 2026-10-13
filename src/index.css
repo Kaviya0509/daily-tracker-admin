@@ -47,50 +47,50 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-charcoal: #1F2937;
-  --color-sky-brand: #0EA5E9;
-  --color-sky-light: #7DD3FC;
+  --color-indigo-brand: #6366F1;
+  --color-indigo-light: #A5B4FC;
 }
 
 :root {
-  --canvas-bg: #F5FAFE;
-  --sidebar-bg: #E6F1FA;
+  --canvas-bg: #F6F7FE;
+  --sidebar-bg: #E8EAFB;
   --card-bg: #FFFFFF;
-  --nested-bg: #EEF6FC;
-  --border-subtle: #D5E5F2;
-  --primary-sky: #0284C7;
-  --hover-sky: #0369A1;
+  --nested-bg: #EEF0FD;
+  --border-subtle: #D9DDF3;
+  --primary-sky: #4F46E5;
+  --hover-sky: #4338CA;
   --main-text: #25344A;
   --muted-text: #66758A;
   --success: #248568;
   --info: #4779C7;
   --error: #C84B50;
 
-  --background: #F5FAFE;
+  --background: #F6F7FE;
   --foreground: #25344A;
   --card: #FFFFFF;
   --card-foreground: #25344A;
   --popover: #FFFFFF;
   --popover-foreground: #25344A;
-  --primary: #0284C7;
+  --primary: #4F46E5;
   --primary-foreground: #FFFFFF;
-  --secondary: #EEF6FC;
+  --secondary: #EEF0FD;
   --secondary-foreground: #25344A;
-  --muted: #EEF6FC;
+  --muted: #EEF0FD;
   --muted-foreground: #66758A;
-  --accent: #EEF6FC;
+  --accent: #EEF0FD;
   --accent-foreground: #25344A;
   --destructive: #C84B50;
-  --border: #D5E5F2;
-  --input: #D5E5F2;
-  --ring: #0284C7;
-  --sidebar: #E6F1FA;
+  --border: #D9DDF3;
+  --input: #D9DDF3;
+  --ring: #4F46E5;
+  --sidebar: #E8EAFB;
   --sidebar-foreground: #25344A;
-  --sidebar-primary: #0284C7;
+  --sidebar-primary: #4F46E5;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EEF6FC;
+  --sidebar-accent: #EEF0FD;
   --sidebar-accent-foreground: #25344A;
-  --sidebar-border: #D5E5F2;
-  --sidebar-ring: #0284C7;
+  --sidebar-border: #D9DDF3;
+  --sidebar-ring: #4F46E5;
   --radius: 0.75rem;
 }
 
@@ -125,14 +125,17 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
     margin: 0;
   }
   html {
-    @apply font-sans antialiased;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

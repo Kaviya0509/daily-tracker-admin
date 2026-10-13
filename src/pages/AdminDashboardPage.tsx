@@ -105,10 +105,10 @@ export default function AdminDashboardPage() {
       value: stats?.inProgress ?? 2,
       subtitle: "Tasks currently underway",
       icon: PlayCircle,
-      iconColor: "text-[#0284C7]",
-      iconBg: "bg-[#0284C7]/15",
-      barColor: "bg-[#0284C7]/50",
-      waveColor: "#0284C7",
+      iconColor: "text-[#4F46E5]",
+      iconBg: "bg-[#4F46E5]/15",
+      barColor: "bg-[#4F46E5]/50",
+      waveColor: "#4F46E5",
       filter: `startDate=${today}&endDate=${today}&status=In Progress`,
     },
     {
@@ -167,7 +167,7 @@ export default function AdminDashboardPage() {
       { bg: "bg-[#dbeafe]", text: "text-[#1d4ed8]" },
       { bg: "bg-[#f3e8ff]", text: "text-[#7e22ce]" },
       { bg: "bg-[#dcfce7]", text: "text-[#15803d]" },
-      { bg: "bg-[#E0F2FE]", text: "text-[#0369A1]" },
+      { bg: "bg-[#E0E7FF]", text: "text-[#4338CA]" },
       { bg: "bg-[#fee2e2]", text: "text-[#b91c1c]" },
     ];
 
@@ -198,8 +198,8 @@ export default function AdminDashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1">
         <div className="max-w-2xl space-y-2">
           {/* Daily Executive Pulse Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0F7FF] border border-[#DCE6F2] text-[#0284C7] text-xs font-bold">
-            <Zap className="h-3.5 w-3.5 fill-[#0284C7] text-[#0284C7]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0F7FF] border border-[#DCE6F2] text-[#4F46E5] text-xs font-bold">
+            <Zap className="h-3.5 w-3.5 fill-[#4F46E5] text-[#4F46E5]" />
             <span>Daily Executive Pulse</span>
           </div>
 
@@ -411,7 +411,7 @@ export default function AdminDashboardPage() {
         <Card className="border border-[#DCE6F2] shadow-xs rounded-2xl bg-[#FFFFFF] overflow-hidden flex flex-col">
           <div className="p-4 sm:p-5 pb-3 sm:pb-4 flex items-center justify-between border-b border-[#DCE6F2] gap-2">
             <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-              <div className="p-2 sm:p-2.5 rounded-xl bg-[#0284C7]/15 text-[#0284C7] shadow-2xs shrink-0">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-[#4F46E5]/15 text-[#4F46E5] shadow-2xs shrink-0">
                 <FileText className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
               </div>
               <div className="min-w-0">
@@ -425,7 +425,7 @@ export default function AdminDashboardPage() {
             </div>
             <button
               onClick={() => navigate(`/tracker?startDate=${today}&endDate=${today}`)}
-              className="text-xs font-bold text-[#0284C7] hover:underline flex items-center gap-1 cursor-pointer shrink-0"
+              className="text-xs font-bold text-[#4F46E5] hover:underline flex items-center gap-1 cursor-pointer shrink-0"
             >
               <span>View all ({todayReports.length})</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -457,7 +457,7 @@ export default function AdminDashboardPage() {
                 return (
                   <div
                     key={report.reportId}
-                    className="p-3 sm:p-3.5 rounded-xl border border-[#DCE6F2] hover:border-[#0284C7]/40 bg-[#F0F7FF] flex items-center justify-between gap-2.5 sm:gap-3.5 shadow-2xs transition-all"
+                    className="p-3 sm:p-3.5 rounded-xl border border-[#DCE6F2] hover:border-[#4F46E5]/40 bg-[#F0F7FF] flex items-center justify-between gap-2.5 sm:gap-3.5 shadow-2xs transition-all"
                   >
                     <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1">
                       {/* Avatar */}
@@ -493,7 +493,7 @@ export default function AdminDashboardPage() {
                       </span>
                       <button
                         onClick={() => navigate(`/reports/${report.reportId}`)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#DCE6F2] text-[#66758A] hover:text-[#0284C7] hover:bg-[#FFFFFF] flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#DCE6F2] text-[#66758A] hover:text-[#4F46E5] hover:bg-[#FFFFFF] flex items-center justify-center transition-colors cursor-pointer shrink-0"
                         title="View Report"
                       >
                         <Eye className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
