@@ -4,6 +4,7 @@ export interface MenteeReport {
   reportId: string;
   menteeUid: string;
   menteeName: string;
+  menteeEmail?: string;
   reportDate: string; // YYYY-MM-DD
   currentTask: string;
   status: ReportStatus;

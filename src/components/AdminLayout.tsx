@@ -28,6 +28,7 @@ const navItems = [
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [now] = useState(() => new Date());
   const location = useLocation();
   const navigate = useNavigate();
   const { userProfile, user } = useAuth();
@@ -225,8 +226,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             {/* Current Date Badge */}
             <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#FFFFFF] border border-[#D5E5F2] text-xs font-medium text-[#25344A] shadow-2xs whitespace-nowrap">
               <Calendar className="h-3.5 w-3.5 text-[#66758A] shrink-0" />
-              <span className="hidden md:inline">{format(new Date(), "EEE, MMM d, yyyy")}</span>
-              <span className="md:hidden">{format(new Date(), "MMM d, yyyy")}</span>
+              <span className="hidden md:inline">{format(now, "EEE, MMM d, yyyy")}</span>
+              <span className="md:hidden">{format(now, "MMM d, yyyy")}</span>
             </div>
 
             {/* Notification Bell */}

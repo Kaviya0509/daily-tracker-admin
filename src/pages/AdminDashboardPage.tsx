@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import {
@@ -33,13 +33,12 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const today = format(new Date(), "yyyy-MM-dd");
+  const [now] = useState(() => new Date());
+  const today = format(now, "yyyy-MM-dd");
 
-  const loadData = async () => {
-    try {
-      setLoading(true);
-
-      const [statsData, reportsData, menteesData] = await Promise.all([
+  const loadData = useCallback(
+    () =>
+      Promise.all([
         getDashboardStats(today),
         getAllReports(
           {
@@ -52,23 +51,26 @@ export default function AdminDashboardPage() {
           20
         ),
         getActiveMentees(),
-      ]);
-
-      setStats(statsData);
-      setTodayReports(reportsData.reports || []);
-      setActiveMentees(menteesData || []);
-      setError("");
-    } catch (err) {
-      console.error("Error fetching dashboard data:", err);
-      setError("Failed to load dashboard statistics. Please verify your connection.");
-    } finally {
-      setLoading(false);
-    }
-  };
+      ])
+        .then(([statsData, reportsData, menteesData]) => {
+          setStats(statsData);
+          setTodayReports(reportsData.reports || []);
+          setActiveMentees(menteesData || []);
+          setError("");
+        })
+        .catch((err) => {
+          console.error("Error fetching dashboard data:", err);
+          setError("Failed to load dashboard statistics. Please verify your connection.");
+        })
+        .finally(() => {
+          setLoading(false);
+        }),
+    [today]
+  );
 
   useEffect(() => {
     loadData();
-  }, [today]);
+  }, [loadData]);
 
   const blockedReports = todayReports.filter((r) => r.status === "Blocked");
 
@@ -183,7 +185,7 @@ export default function AdminDashboardPage() {
           ? new Date(createdAt)
           : createdAt.toDate
           ? createdAt.toDate()
-          : new Date();
+          : now;
       return format(date, "hh:mm a");
     } catch {
       return "10:24 AM";
@@ -210,7 +212,7 @@ export default function AdminDashboardPage() {
           <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed max-w-xl">
             Live tracking for{" "}
             <span className="font-bold text-[#25344A]">
-              {format(new Date(), "EEEE, MMMM d, yyyy")}
+              {format(now, "EEEE, MMMM d, yyyy")}
             </span>
             . Review mentee deliverables, eliminate blockers, and monitor daily progress.
           </p>
@@ -233,7 +235,14 @@ export default function AdminDashboardPage() {
         <div className="flex items-center gap-3 bg-[#C84B50]/10 border border-[#C84B50]/30 text-[#C84B50] px-4 py-3 rounded-xl text-sm shadow-xs">
           <AlertCircle className="h-5 w-5 text-[#C84B50] shrink-0" />
           <span className="flex-1">{error}</span>
-          <Button variant="outline" size="sm" onClick={() => loadData()}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setLoading(true);
+              loadData();
+            }}
+          >
             Retry
           </Button>
         </div>

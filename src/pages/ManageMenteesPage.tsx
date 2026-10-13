@@ -36,24 +36,21 @@ export default function ManageMenteesPage() {
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const loadData = async () => {
-    setLoading(true);
-    try {
-      const [menteesData, reportsData] = await Promise.all([
-        getActiveMentees(),
-        getAllReports({ search: "", startDate: "", endDate: "", menteeUid: "", status: "" }, 500),
-      ]);
-      setMentees(menteesData);
-      setReports(reportsData.reports);
-    } catch {
-      toast.error("Failed to load mentees roster");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    loadData();
+    Promise.all([
+      getActiveMentees(),
+      getAllReports({ search: "", startDate: "", endDate: "", menteeUid: "", status: "" }, 500),
+    ])
+      .then(([menteesData, reportsData]) => {
+        setMentees(menteesData);
+        setReports(reportsData.reports);
+      })
+      .catch(() => {
+        toast.error("Failed to load mentees roster");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const handleAddMentee = async (e: React.FormEvent) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useSearchParams, Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { format } from "date-fns";
@@ -138,14 +138,14 @@ export default function ReportDetailsPage() {
     register,
     handleSubmit,
     setValue,
-    watch,
+    control,
     reset,
     formState: { errors },
   } = useForm<EditFormData>({
     resolver: zodResolver(editSchema),
   });
 
-  const currentStatus = watch("status");
+  const currentStatus = useWatch({ control, name: "status" });
 
   useEffect(() => {
     const fetchReport = async () => {
